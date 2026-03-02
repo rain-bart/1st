@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love - My Melody</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 30%, #ffcce0 70%, #ffb6c1 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes emoji-fall {
+            0% { opacity: 1; transform: translateY(-100vh) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-heart { animation: pulse-heart 1.5s ease-in-out infinite; }
+        .animate-bounce-gentle { animation: bounce-gentle 2s ease-in-out infinite; }
+        .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+        .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Heart background pattern */
+        .bg-hearts {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 35c-5-5-10-10-10-15 0-3 2-5 5-5 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 2 5 5 0 5-5 10-10 15z' fill='%23ffb6c1' fill-opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        /* ============================================
+           INTRO SECTION
+           ============================================ */
+        #intro {
+            background: linear-gradient(135deg, #ffe4ec 0%, #ffcce0 50%, #ffb6c1 100%);
+        }
+
+        #intro img {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        #intro h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #db2777;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #intro p {
+            font-size: 1.2rem;
+            color: #be185d;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff69b4, #db2777);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            animation: pulse-heart 1.5s ease-in-out infinite;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Floating decorations */
+        .floating-heart {
+            position: absolute;
+            color: #ff69b4;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* ============================================
+           BOUQUET SECTION
+           ============================================ */
+        #bouquet {
+            background: linear-gradient(135deg, #ffcce0 0%, #ffb6c1 50%, #ff99ac 100%);
+        }
+
+        #bouquet h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #db2777;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .bouquet-container {
+            position: relative;
+            width: 350px;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+
+        .flower-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 120px;
+            background: linear-gradient(to top, #ffb6c1, #ffcce0);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .flower.bloomed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .flower:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .flower-indicator {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            animation: bounce-gentle 1s ease-in-out infinite;
+        }
+
+        .flower-indicator::after {
+            content: '✨';
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            background: #ff69b4;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #db2777;
+            transform: translateY(-2px);
+        }
+
+        .love-message {
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            display: none;
+        }
+
+        .love-message.show {
+            display: block;
+            animation: fade-in-up 0.5s ease;
+        }
+
+        /* ============================================
+           LETTER SECTION
+           ============================================ */
+        #letter {
+            background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 50%, #ffcce0 100%);
+        }
+
+        #letter h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #db2777;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ffcce0, #ffb6c1);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-seal {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: #db2777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            animation: pulse-heart 1.5s ease-in-out infinite;
+        }
+
+        .envelope-seal::after {
+            content: '❤️';
+            font-size: 24px;
+        }
+
+        .envelope.open .envelope-seal {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .letter-paper {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 80%;
+            background: white;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .envelope.open .letter-paper {
+            bottom: 100%;
+        }
+
+        .letter-preview {
+            text-align: center;
+            color: #db2777;
+        }
+
+        .letter-preview::before {
+            content: '❤️';
+            display: block;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .letter-content {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .letter-content.show {
+            display: block;
+            animation: fade-in-up 0.5s ease;
+        }
+
+        .letter-content h3 {
+            color: #db2777;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .letter-content p {
+            color: #be185d;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .click-hint {
+            color: #db2777;
+            margin-top: 20px;
+            animation: bounce-gentle 1s ease-in-out infinite;
+        }
+
+        /* ============================================
+           REASONS SECTION
+           ============================================ */
+        #reasons {
+            background: linear-gradient(135deg, #ffe4ec 0%, #ffcce0 50%, #ffb6c1 100%);
+        }
+
+        #reasons h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #db2777;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #reasons > p {
+            color: #be185d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .melody-side {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .reasons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .reason-btn {
+            background: rgba(255,255,255,0.8);
+            border: none;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #db2777;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reason-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            background: white;
+        }
+
+        .reason-btn .icon {
+            font-size: 2rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            animation: fade-in-up 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #db2777;
+        }
+
+        .modal-content h3 {
+            color: #db2777;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .modal-content p {
+            color: #be185d;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           GALLERY SECTION
+           ============================================ */
+        #gallery {
+            background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 50%, #ffcce0 100%);
+        }
+
+        #gallery h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #db2777;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #gallery > p {
+            color: #be185d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .melody-gallery {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .photo-card {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffcce0, #ffb6c1);
+            color: #db2777;
+        }
+
+        .photo-placeholder::before {
+            content: '📷';
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            color: white;
+            padding: 15px 10px 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* ============================================
+           MUSIC SECTION
+           ============================================ */
+        #music {
+            background: linear-gradient(135deg, #ffcce0 0%, #ffb6c1 50%, #ff99ac 100%);
+        }
+
+        #music h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #db2777;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #music > p {
+            color: #be185d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .music-card {
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .music-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff69b4, #db2777);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: pulse-heart 1.5s ease-in-out infinite;
+        }
+
+        .music-icon::after {
+            content: '🎵';
+            font-size: 3rem;
+        }
+
+        .music-status {
+            color: #db2777;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .music-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .music-btn {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background: #db2777;
+            transform: translateY(-2px);
+        }
+
+        .music-btn.outline {
+            background: transparent;
+            border: 2px solid #ff69b4;
+            color: #db2777;
+        }
+
+        .music-btn.outline:hover {
+            background: #ff69b4;
+            color: white;
+        }
+
+        .melody-music {
+            width: 150px;
+            margin-top: 30px;
+            animation: bounce-gentle 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           LOVE QUESTION SECTION
+           ============================================ */
+        #love-question {
+            background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 30%, #ffcce0 70%, #ffb6c1 100%);
+            overflow: hidden;
+        }
+
+        .floating-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-decorations span {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        #love-question img {
+            width: 200px;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        #love-question h2 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #db2777;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .love-buttons {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff69b4, #db2777);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-no {
+            background: white;
+            color: #db2777;
+            padding: 12px 30px;
+            border: 2px solid #ffb6c1;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .hint-text {
+            color: #db2777;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            animation: bounce-gentle 1s ease-in-out infinite;
+        }
+
+        .final-message {
+            text-align: center;
+            display: none;
+        }
+
+        .final-message.show {
+            display: block;
+            animation: fade-in-up 0.5s ease;
+        }
+
+        .final-message h3 {
+            font-size: 2.5rem;
+            color: #db2777;
+            margin-bottom: 10px;
+        }
+
+        .final-message p {
+            color: #be185d;
+            font-size: 1.2rem;
+        }
+
+        /* Emoji Rain */
+        .emoji-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+            display: none;
+        }
+
+        .emoji-rain.show {
+            display: block;
+        }
+
+        .emoji-item {
+            position: absolute;
+            font-size: 2rem;
+            animation: emoji-fall 3s linear forwards;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: none;
+            gap: 5px;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .nav-bottom {
+                display: flex;
+            }
+        }
+
+        .nav-bottom a {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #be185d;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bottom a:hover,
+        .nav-bottom a.active {
+            background: #ff69b4;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         BACKGROUND MUSIC 
+         ============================================
+    -->
+    <audio id="bgMusic" loop>
+        <source src="audio/background-music.mp3" type="audio/mpeg">
+        <!-- Fallback for other formats -->
+        <source src="audio/background-music.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- ============================================
+         EMOJI RAIN CONTAINER
+         ============================================ -->
+    <div id="emojiRain" class="emoji-rain"></div>
+
+    <!-- ============================================
+         SECTION 1: INTRO
+         ============================================ -->
+    <section id="intro" class="bg-hearts">
+        <!-- Floating decorations -->
+        <span class="floating-heart" style="top: 10%; left: 10%; animation-delay: 0s;">✨</span>
+        <span class="floating-heart" style="top: 15%; right: 15%; animation-delay: 0.5s;">💖</span>
+        <span class="floating-heart" style="bottom: 20%; left: 15%; animation-delay: 1s;">💕</span>
+
+        <img src="images/melody-hearts.png" alt="My Melody">
+        
+        <h1 class="font-pacifico">Happy 1st Monthsary!</h1>
+        <p>A special place made just for you, filled with all my love hehehe 💕</p>
+        
+        <a href="#bouquet" class="btn-primary">
+            Enter Our World →
+        </a>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: INTERACTIVE BOUQUET
+         ============================================ -->
+    <section id="bouquet">
+        <h2 class="font-pacifico">A Bouquet of Love for You</h2>
+        
+        <div class="bouquet-container">
+            <div class="flower-wrapper"></div>
+            
+            <!-- Flowers (will bloom when clicked) -->
+            <svg class="flower" data-id="1" style="left: 15%; top: 40%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ff69b4"/>
+                <circle cx="30" cy="12" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="2" style="left: 30%; top: 25%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ff1493"/>
+                <circle cx="30" cy="12" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="3" style="left: 45%; top: 45%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ffb6c1"/>
+                <circle cx="30" cy="12" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="4" style="left: 60%; top: 30%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#db2777"/>
+                <circle cx="30" cy="12" r="10" fill="#db2777" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#db2777" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#db2777" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#db2777" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="5" style="left: 75%; top: 40%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ff99ac"/>
+                <circle cx="30" cy="12" r="10" fill="#ff99ac" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ff99ac" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ff99ac" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ff99ac" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="6" style="left: 20%; top: 55%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ff69b4"/>
+                <circle cx="30" cy="12" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ff69b4" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="7" style="left: 42%; top: 60%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ff1493"/>
+                <circle cx="30" cy="12" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ff1493" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+            
+            <svg class="flower" data-id="8" style="left: 65%; top: 55%;" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="12" fill="#ffb6c1"/>
+                <circle cx="30" cy="12" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="48" cy="30" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="30" cy="48" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="12" cy="30" r="10" fill="#ffb6c1" opacity="0.8"/>
+                <circle cx="30" cy="30" r="8" fill="#ffe4e1"/>
+            </svg>
+
+            <!-- Click indicators -->
+            <div class="flower-indicator" style="left: 20%; top: 45%;" data-target="1"></div>
+            <div class="flower-indicator" style="left: 35%; top: 30%;" data-target="2"></div>
+            <div class="flower-indicator" style="left: 50%; top: 50%;" data-target="3"></div>
+            <div class="flower-indicator" style="left: 65%; top: 35%;" data-target="4"></div>
+            <div class="flower-indicator" style="left: 80%; top: 45%;" data-target="5"></div>
+            <div class="flower-indicator" style="left: 25%; top: 60%;" data-target="6"></div>
+            <div class="flower-indicator" style="left: 47%; top: 65%;" data-target="7"></div>
+            <div class="flower-indicator" style="left: 70%; top: 60%;" data-target="8"></div>
+        </div>
+        
+        <button class="btn-secondary" onclick="bloomAllFlowers()">
+            🎁 Bloom All Flowers
+        </button>
+        
+        <div id="bouquetMessage" class="love-message">
+            <p>"Like these flowers, my love for you blooms more beautifully every day my baby coleen!" hehehe🌸💕</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: LOVE LETTER
+         ============================================
+         INSTRUCTION: Edit the letter content below
+         Change the text between the <p> tags
+    -->
+    <section id="letter">
+        <h2 class="font-pacifico">A Letter From My Heart</h2>
+        
+        <div class="envelope-container">
+            <div class="envelope" onclick="openEnvelope()">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="envelope-seal"></div>
+                <div class="letter-paper">
+                    <div class="letter-preview">
+                        <span class="font-pacifico">My Love Letter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="letterContent" class="letter-content">
+            <h3 class="font-pacifico">My Baby Coleen,</h3>
+            <!-- 
+                =====================================
+                EDIT YOUR LETTER HERE!
+                Change the text below to your own words
+                =====================================
+            -->
+            <p>
+Happy 1st Monthsary!!!!! 🤍
+
+One month. Our first monthsary.
+And honestly? I still can’t believe I get to call you mine nga po baby ih! I feel so lucky to be your boyfriend soo soo muchhh!
+
+Firstlyyyy, Thank you for being my safe place. For the random na mga chika, the late-night talks, the small updates about your day, and even the “I’m tired” messages that I secretly love because it means you trust me enough to share your vulnerable side.
+
+But more than thatttt! thank you for fighting for us!
+
+Thank you for choosing to stay. For not giving up on us. For taking every step with me, even when things felt challenging. I see your efforts po mahal! I see your heart, And I appreciate you more than you know po soo much! hehehe
+
+Life will always have more challenges to offer pero that’s something we can’t avoid. But even knowing that, I still choose this. I still choose you my pinakamamahal na baby coleen baby loveeees! I’m willing to face whatever comes our way because being with you is something I always want to strive for.
+
+You don’t even realize how much you inspire me. The way you handle your responsibilities, your strength, your softness, your smile, as in po especially your smile. That’s still my favorite thing in the world, seeing you happy po hehehe
+
+If I could protect one thing forever, it would be your peace. I’ll always choose to be someone who adds calm to your life, not bringing chaos.  Someone who supports you in your dreams, celebrates your wins, and holds your hand through the hard days.
+
+I know we’re both still growing po. And we’re still figuring things out. But I’m really really grateful that I get to grow with you. Step by step. Month by month po hehe
+
+No matter how busy life gets, no matter how far or near we are physically, please remember this:
+
+I am here.
+I choose you.
+And I will keep choosing you.
+
+Happy first monthsary, my baby coleen!
+I love you more deeply than words can fully explain, but I promise to show you how much i really love you every single day. 🤍
+
+With all my love,
+Your Someone Special 💕
+            </p>
+            <!-- END OF LETTER CONTENT -->
+        </div>
+        
+        <p id="clickHint" class="click-hint">Click the envelope to open my letter 💌</p>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: REASONS WHY I LOVE YOU
+         ============================================
+         INSTRUCTION: Edit the reasons in the JavaScript section
+         Look for the "reasonsData" variable
+    -->
+    <section id="reasons">
+        <!-- 
+            INSTRUCTION: Side My Melody image
+            Location: images/melody-love.png
+        -->
+        <img src="images/melody-love.png" alt="My Melody" class="melody-side">
+        
+        <h2 class="font-pacifico">Reasons Why I Love You</h2>
+        <p>Click each button to discover why you mean the world to me 💕</p>
+        
+        <div class="reasons-grid">
+            <button class="reason-btn" onclick="showReason(0)">
+                <span class="icon">⭐</span>
+                <span>Your Dedication</span>
+            </button>
+            <button class="reason-btn" onclick="showReason(1)">
+                <span class="icon">🌸</span>
+                <span>Your Tenderness</span>
+            </button>
+            <button class="reason-btn" onclick="showReason(2)">
+                <span class="icon">😄</span>
+                <span>Your Humor</span>
+            </button>
+            <button class="reason-btn" onclick="showReason(3)">
+                <span class="icon">💎</span>
+                <span>Your Beauty</span>
+            </button>
+            <button class="reason-btn" onclick="showReason(4)">
+                <span class="icon">❤️</span>
+                <span>Your Heart</span>
+            </button>
+            <button class="reason-btn" onclick="showReason(5)">
+                <span class="icon">🔮</span>
+                <span>Our Future</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: OUR MOMENTS GALLERY
+         ============================================
+         INSTRUCTION: Add your photos to the images folder
+         Then update the src attributes below
+         Format: images/photo1.jpg, images/photo2.jpg, etc.
+    -->
+    <section id="gallery">
+        <!-- 
+            INSTRUCTION: Gallery My Melody image
+            Location: images/melody-memories.png
+        -->
+        <img src="images/melody-memories.png" alt="My Melody" class="melody-gallery">
+        
+        <h2 class="font-pacifico">Our Moments Together</h2>
+        <p>Our beautiful memories captured in time 📸💕</p>
+        
+        <div class="gallery-grid">
+            <!-- 
+                =====================================
+                PHOTOS
+                =====================================
+            -->
+            <div class="photo-card">
+                <img src="images/1.jpg" alt="Our First Date">
+                <div class="photo-caption">Our First Date</div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="images/2.jpg" alt="Our First Date">
+                <div class="photo-caption">That Special Day</div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="images/3.jpg" alt="Our First Date">
+                <div class="photo-caption">Adventure Together</div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="images/4.jpg" alt="Our First Date">
+                <div class="photo-caption">Sweet Moments</div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="images/5.jpg" alt="Our First Date">
+                <div class="photo-caption">Laughing Together</div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="images/6.jpg" alt="Our First Date">
+                <div class="photo-caption">Forever Us</div>
+            </div>
+            <!-- END OF PHOTO CARDS -->
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: BACKGROUND MUSIC
+         ============================================ -->
+    <section id="music">
+        <h2 class="font-pacifico">Our Love Song</h2>
+        <p>A special song that reminds me of us 🎵💕</p>
+        
+        <div class="music-card">
+            <div class="music-icon"></div>
+            <p class="music-status" id="musicStatus">Click play to start our song</p>
+            <div class="music-controls">
+                <button class="music-btn" onclick="playMusic()">▶ Play</button>
+                <button class="music-btn outline" onclick="pauseMusic()">⏸ Pause</button>
+            </div>
+        </div>
+        
+        <!-- 
+            INSTRUCTION: Happy My Melody image
+            Location: images/melody-happy.png
+        -->
+        <img src="images/melody-happy.png" alt="My Melody" class="melody-music">
+    </section>
+
+    <!-- ============================================
+         SECTION 7: DO YOU LOVE ME?
+         ============================================ -->
+    <section id="love-question">
+        <div class="floating-decorations">
+            <span style="top: 10%; left: 10%;">💖</span>
+            <span style="top: 15%; right: 15%; animation-delay: 0.5s;">💕</span>
+            <span style="bottom: 20%; left: 15%; animation-delay: 1s;">💗</span>
+            <span style="bottom: 10%; right: 10%; animation-delay: 1.5s;">💓</span>
+        </div>
+        
+        <!-- 
+            INSTRUCTION: Love My Melody image
+            Location: images/melody-love.png
+        -->
+        <img src="images/melody-love.png" alt="My Melody">
+        
+        <h2 class="font-pacifico">Do You Love Me?</h2>
+        
+        <div class="love-buttons" id="loveButtons">
+            <button class="btn-yes" id="yesBtn" onclick="handleYes()">
+                ❤️ YES
+            </button>
+            <button class="btn-no" id="noBtn" onclick="handleNo()">
+                No 💔
+            </button>
+        </div>
+        
+        <p id="hintText" class="hint-text" style="display: none;">Are you sure? Think again! 😢</p>
+        
+        <div id="finalMessage" class="final-message">
+            <h3 class="font-pacifico">I Love You Soo Much Moreeee!</h3>
+            <p>Forever and Always my pretty little baby coleen! 🌸✨</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         NAVIGATION BAR
+         ============================================ -->
+    <nav class="nav-bottom">
+        <a href="#intro">Home</a>
+        <a href="#bouquet">Bouquet</a>
+        <a href="#letter">Letter</a>
+        <a href="#reasons">Reasons</a>
+        <a href="#gallery">Moments</a>
+        <a href="#music">Music</a>
+        <a href="#love-question">Love?</a>
+    </nav>
+
+    <!-- ============================================
+         MODAL FOR REASONS
+         ============================================ -->
+    <div id="reasonModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h3 id="modalTitle" class="font-pacifico"></h3>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // REASONS DATA - EDIT THESE!
+        // ============================================
+        // Change the text in the "content" fields to your own words
+        const reasonsData = [
+            {
+                title: "⭐ Your Dedication",
+                content: "The way you pour your heart into everything you do inspires me every single day. Your commitment to your dreams and to us is truly remarkable."
+            },
+            {
+                title: "🌸 Your Tenderness",
+                content: "Your gentle touch and caring nature make me feel so loved and protected. You have the softest heart that always knows how to comfort me."
+            },
+            {
+                title: "😄 Your Humor",
+                content: "You make me laugh even on my darkest days. Your silly jokes and beautiful smile are the best medicine for any problem."
+            },
+            {
+                title: "💎 Your Beauty",
+                content: "Both inside and out, you are the most beautiful person I have ever known. Your kindness radiates through everything you do."
+            },
+            {
+                title: "❤️ Your Heart",
+                content: "Your compassion for others and your ability to love so deeply is what makes you truly special. You have the purest soul."
+            },
+            {
+                title: "🔮 Our Future Together",
+                content: "I can't wait to spend the rest of my life with you. Every dream I have includes you by my side, and that makes me the happiest person alive."
+            }
+        ];
+
+        // ============================================
+        // BOUQUET FUNCTIONALITY
+        // ============================================
+        let bloomedFlowers = [];
+
+        // Click on flower indicators to bloom flowers
+        document.querySelectorAll('.flower-indicator').forEach(indicator => {
+            indicator.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                bloomFlower(targetId);
+                this.style.display = 'none';
+            });
+        });
+
+        // Click on flowers directly
+        document.querySelectorAll('.flower').forEach(flower => {
+            flower.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                bloomFlower(id);
+                // Hide corresponding indicator
+                const indicator = document.querySelector(`.flower-indicator[data-target="${id}"]`);
+                if (indicator) indicator.style.display = 'none';
+            });
+        });
+
+        function bloomFlower(id) {
+            if (!bloomedFlowers.includes(id)) {
+                bloomedFlowers.push(id);
+                const flower = document.querySelector(`.flower[data-id="${id}"]`);
+                if (flower) {
+                    flower.classList.add('bloomed');
+                }
+                checkAllBloomed();
+            }
+        }
+
+        function bloomAllFlowers() {
+            document.querySelectorAll('.flower').forEach(flower => {
+                flower.classList.add('bloomed');
+            });
+            document.querySelectorAll('.flower-indicator').forEach(ind => {
+                ind.style.display = 'none';
+            });
+            bloomedFlowers = ['1', '2', '3', '4', '5', '6', '7', '8'];
+            checkAllBloomed();
+        }
+
+        function checkAllBloomed() {
+            if (bloomedFlowers.length === 8) {
+                setTimeout(() => {
+                    document.getElementById('bouquetMessage').classList.add('show');
+                }, 500);
+            }
+        }
+
+        // ============================================
+        // LETTER FUNCTIONALITY
+        // ============================================
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const letterContent = document.getElementById('letterContent');
+            const clickHint = document.getElementById('clickHint');
+            
+            envelope.classList.add('open');
+            
+            setTimeout(() => {
+                letterContent.classList.add('show');
+                clickHint.style.display = 'none';
+            }, 600);
+        }
+
+        // ============================================
+        // REASONS MODAL
+        // ============================================
+        function showReason(index) {
+            const modal = document.getElementById('reasonModal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+            
+            title.textContent = reasonsData[index].title;
+            text.textContent = reasonsData[index].content;
+            
+            modal.classList.add('show');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'reasonModal') {
+                document.getElementById('reasonModal').classList.remove('show');
+            }
+        }
+
+        // ============================================
+        // MUSIC FUNCTIONALITY (30% VOLUME)
+        // ============================================
+        const bgMusic = document.getElementById('bgMusic');
+        const musicStatus = document.getElementById('musicStatus');
+
+        // Set volume to 30%
+        bgMusic.volume = 0.3;
+
+        function playMusic() {
+            bgMusic.play().then(() => {
+                musicStatus.textContent = 'Now Playing 🎶';
+            }).catch(err => {
+                musicStatus.textContent = 'Could not play. Check audio file.';
+                console.log('Audio error:', err);
+            });
+        }
+
+        function pauseMusic() {
+            bgMusic.pause();
+            musicStatus.textContent = 'Paused ⏸';
+        }
+
+        // ============================================
+        // LOVE QUESTION FUNCTIONALITY
+        // ============================================
+        let noClicks = 0;
+        let yesSize = 1;
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const hintText = document.getElementById('hintText');
+        const finalMessage = document.getElementById('finalMessage');
+        const loveButtons = document.getElementById('loveButtons');
+
+        function handleNo() {
+            noClicks++;
+            
+            if (noClicks >= 5) {
+                noBtn.style.display = 'none';
+                hintText.textContent = "There's only one right answer now! 💕";
+            } else {
+                // Move button randomly
+                const x = (Math.random() - 0.5) * 200;
+                const y = (Math.random() - 0.5) * 100;
+                noBtn.style.transform = `translate(${x}px, ${y}px)`;
+                noBtn.classList.add('animate-shake');
+                setTimeout(() => noBtn.classList.remove('animate-shake'), 300);
+                
+                // Increase yes button size
+                yesSize += 0.3;
+                yesBtn.style.transform = `scale(${yesSize})`;
+                
+                hintText.style.display = 'block';
+            }
+        }
+
+        function handleYes() {
+            // Show emoji rain
+            const emojiRain = document.getElementById('emojiRain');
+            const emojis = ['💖', '💕', '💗', '💓', '💝', '🌸', '✨', '🎀', '💘', '🥰', '😍', '💞'];
+            
+            emojiRain.innerHTML = '';
+            for (let i = 0; i < 50; i++) {
+                const emoji = document.createElement('span');
+                emoji.className = 'emoji-item';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%';
+                emoji.style.animationDelay = Math.random() * 2 + 's';
+                emoji.style.animationDuration = (2 + Math.random() * 2) + 's';
+                emojiRain.appendChild(emoji);
+            }
+            
+            emojiRain.classList.add('show');
+            
+            // Hide buttons and show final message
+            loveButtons.style.display = 'none';
+            hintText.style.display = 'none';
+            finalMessage.classList.add('show');
+            
+            // Stop emoji rain after 5 seconds
+            setTimeout(() => {
+                emojiRain.classList.remove('show');
+            }, 5000);
+        }
+
+        // ============================================
+        // NAVIGATION HIGHLIGHT
+        // ============================================
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-bottom a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ============================================
+        // AUTO-PLAY MUSIC ON FIRST INTERACTION
+        // ============================================
+        let musicStarted = false;
+        document.addEventListener('click', () => {
+            if (!musicStarted && bgMusic.querySelector('source').src !== '') {
+                playMusic();
+                musicStarted = true;
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
